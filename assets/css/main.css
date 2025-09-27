@@ -20,39 +20,44 @@
   /* Navigation font */
   --nav-font: "Nunito", sans-serif;
 }
-
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* ============================
+   Global Color System
+   ============================ */
+/* Global Colors - Core Palette */
 :root {
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #2d465e; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #0d83fd;
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-}
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+  --background-color: #ffffff; /* Main background */
+  --default-color: #212529; /* Body text */
+  --heading-color: #2d465e; /* Headings */ /* Accent System */
+  --accent-color: #101840; /* Primary accent */
+  --accent-light: #24335a; /* Hover, secondary accents */
+  --accent-lighter: #3e4b75; /* Borders, highlights */
+  --accent-dark: #0c122f; /* Stronger emphasis */
+  --accent-darker: #070a1d; /* Background for dark sections */ /* Complementary / Call to Action */
+  --highlight-color: #fb6601; /* Golden yellow for CTA */
+  --highlight-soft: #ffd766; /* Hover, subtle highlight */ /* Neutral Support */
+  --surface-color: #ffffff; /* Surfaces like cards */
+  --contrast-color: #ffffff; /* Text on accent backgrounds */
+  --neutral-bg: #f4f5f7; /* Light gray background */
+  --neutral-text: #69707d; /* Secondary text */
+  --neutral-dark: #1e1e1e; /* Strong body text */
+} /* Navigation */
 :root {
-  --nav-color: #212529; /* The default color of the main navmenu links */
-  --nav-hover-color: #0d83fd;
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #0d83fd;
-}
-
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
+  --nav-color: #101840; /* deep navy */
+  --nav-hover-color: #fb6601; /* golden highlight */
+  --nav-mobile-background-color: #101840; /* dark background for mobile */
+  --nav-dropdown-background-color: #101840;
+  --nav-dropdown-color: #ffffff;
+  --nav-dropdown-hover-color: #fb6601;
+} /* Background Presets */
 .light-background {
   --background-color: #f3f9ff;
   --surface-color: #ffffff;
 }
-
 .dark-background {
-  --background-color: #0d83fd;
+  --background-color: var(--accent-color);
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #409dfd;
+  --surface-color: #24335a;
   --contrast-color: #ffffff;
 }
 
@@ -160,8 +165,9 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
-  margin-right: 8px;
+  /* max-height: 32px; */
+  max-height: 50px;
+  /* margin-right: 8px; */
 }
 
 .header .logo h1 {
@@ -447,11 +453,13 @@ h6 {
 
 .footer .footer-about .logo {
   line-height: 1;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
+  margin-bottom: 10px;
+  margin-left: -5px;
 }
 
 .footer .footer-about .logo img {
-  max-height: 40px;
+  max-height: 50px;
   margin-right: 6px;
 }
 
@@ -484,9 +492,10 @@ h6 {
 
 .footer .social-links a:hover {
   /* color: var(--accent-color); */
-  color: white !important;
+  color: #fb6601 !important;
+  /* color: white !important; */
   /* border-color: var(--accent-color); */
-  border-color: white;
+  border-color: #fb6601;
 }
 
 .footer h4 {
@@ -526,11 +535,12 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   display: inline-block;
   line-height: 1;
+  font-size: 16px;
 }
 
 .footer .footer-links ul a:hover {
   /* color: var(--accent-color); */
-  color: white;
+  color: #fb6601;
   padding-left: 10px;
 }
 
@@ -768,7 +778,8 @@ section,
   font-size: 16px;
   /* font-weight: 400; */
   font-weight: 600;
-  color: var(--accent-color);
+  /* color: var(--accent-color); */
+  color: #fb6601;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
@@ -783,7 +794,8 @@ section,
   transform: translateX(-50%);
   width: 40px;
   height: 1px;
-  background: var(--accent-color);
+  /* background: var(--accent-color); */
+  background: #fb6601;
 }
 
 .section-title p {
@@ -901,7 +913,7 @@ section,
 
 .hero .hero-stats .stat-item .stat-number {
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--accent-color);
   margin-bottom: 0.25rem;
 }
@@ -1044,7 +1056,7 @@ section,
 
 .about .stats-row .stat-item .stat-number {
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1;
   color: var(--accent-color);
   font-family: var(--heading-font);
@@ -1467,7 +1479,13 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
-
+.portfolio.section {
+  background-color: color-mix(
+    in srgb,
+    var(--background-color),
+    var(--accent-color) 2%
+  );
+}
 .portfolio .portfolio-filters {
   display: flex;
   justify-content: center;
@@ -1574,9 +1592,10 @@ section,
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(54, 144, 231, 0.85),
-    rgba(54, 144, 231, 0.75)
+    rgba(16, 24, 64, 0.95),
+    rgba(36, 51, 90, 0.85)
   );
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1637,11 +1656,13 @@ section,
 }
 
 .portfolio .portfolio-card .project-details .project-header .project-category {
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--accent-color);
+  /* color: var(--accent-color); */
+  color: #fb6601;
 }
 
 .portfolio .portfolio-card .project-details .project-header .project-year {
@@ -1881,7 +1902,7 @@ section,
 }
 
 .team .team-member .member-info h4 {
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 8px;
   color: var(--heading-color);
@@ -1891,7 +1912,8 @@ section,
 .team .team-member .member-info span {
   display: block;
   font-size: 0.9rem;
-  color: var(--accent-color);
+  /* color: var(--accent-color); */
+  color: #fb6601;
   font-weight: 400;
   margin-bottom: 20px;
   letter-spacing: 0.5px;
@@ -1977,7 +1999,13 @@ section,
   /* Swiper Pagination */
   /* Responsive Styles */
 }
-
+.testimonials.section {
+  background-color: color-mix(
+    in srgb,
+    var(--background-color),
+    var(--accent-color) 2%
+  );
+}
 .testimonials .testimonial-slider {
   position: relative;
   padding-bottom: 50px;
@@ -4535,6 +4563,3 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}

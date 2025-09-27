@@ -56,13 +56,13 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Digital-Demo</h1>
+        <img src="assets/img/logo/logo.png" alt="" class="img-fluid">
+        <!-- <h1 class="sitename">Digital-Demo</h1> -->
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
@@ -109,7 +109,7 @@
                 exercitation ullamco laboris.</p>
               <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
                 <a href="#about" class="btn-primary">Get Started Today</a>
-                
+
               </div>
               <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
                 <div class="stat-item">
@@ -1032,7 +1032,7 @@
     <!-- /Testimonials Section -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
+    <section id="contact" class="contact section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Contact</span>
@@ -1156,7 +1156,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Digital-Demo</span>
+            <!-- <span class="sitename">Digmediahub</span> -->
+             <img src="./assets/img/logo/footer-logo.png" alt="" class="img-fluid">
+
           </a>
           <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
             donna mare fermentum iaculis eu non diam phasellus.</p>
@@ -1274,6 +1276,45 @@
       });
     });
   </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll("#navmenu ul li a");
+
+      function setActiveLink() {
+        let current = "";
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120; // adjust for header height
+          const sectionHeight = section.offsetHeight;
+
+          if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", setActiveLink);
+
+      // Run once on load so correct section is active if page is not at top
+      setActiveLink();
+    });
+  </script>
+  <script>
+    window.onload = () => {
+      window.scrollTo(0, 0);
+    };
+  </script>
+
 
 </body>
 
